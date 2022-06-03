@@ -107,6 +107,18 @@
         "name": "shenyu",
         "desc": "开发环境shenyu网关",
         "link": "http://172.16.21.22:19095"
+      },
+      {
+        "icon": "./static/images/vue.ico",
+        "name": "dataxWeb",
+        "desc": "开发环境dataxWeb",
+        "link": "http://172.16.35.56:9201/index.html"
+      },
+      {
+        "icon": "./static/images/xxl.ico",
+        "name": "xxl-job",
+        "desc": "开发环境xxl-job",
+        "link": "http://172.16.35.56:9100/xxl-job-admin/"
       }
     ]
   },
@@ -125,6 +137,18 @@
         "name": "shenyu",
         "desc": "测试环境shenyu网关",
         "link": "http://172.16.21.22:9095"
+      },
+      {
+        "icon": "./static/images/vue.ico",
+        "name": "dataxWeb",
+        "desc": "开发环境dataxWeb",
+        "link": "http://172.16.35.55:19201/index.html#/login?redirect=%2Fdashboard"
+      },
+      {
+        "icon": "./static/images/xxl.ico",
+        "name": "xxl-job",
+        "desc": "开发环境xxl-job",
+        "link": "http://172.16.35.55:9100/xxl-job-admin/"
       }
     ]
   },
@@ -143,6 +167,18 @@
         "name": "shenyu",
         "desc": "演示环境shenyu网关",
         "link": "http://172.16.21.204:9095"
+      },
+      {
+        "icon": "./static/images/vue.ico",
+        "name": "dataxWeb",
+        "desc": "演示环境dataxWeb",
+        "link": "http://172.16.35.55:9201/index.html#/login?redirect=%2Fdashboard"
+      },
+      {
+        "icon": "./static/images/xxl.ico",
+        "name": "xxl-job",
+        "desc": "演示环境xxl-job",
+        "link": "http://172.16.35.55:9110/xxl-job-admin/"
       }
     ]
   }
