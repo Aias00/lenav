@@ -4,7 +4,7 @@
       <li class="nav-li" v-for="(item, index) in navData" :key="index">
         <Poptip placement="right" trigger="hover" :transfer="true">
           <div class="top">
-            <p style="float: left;margin-right: 5px;">
+            <p style="float: left; margin-right: 5px">
               <img class="icon" v-lazy="item.icon" alt="" />
             </p>
             <span>{{ item.name }}</span>
@@ -23,10 +23,10 @@
           <div class="mu" slot="content">
             <ButtonGroup vertical>
               <Button icon="ios-send" @click="jumpLink(item)">跳转</Button>
-              <Button icon="md-document" v-if="item.doc" @click="openDoc(item)" >使用文档</Button>
-              <Button icon="md-heart" @click="addFavorite(item)"
+              <!-- <Button icon="md-document" v-if="item.doc" @click="openDoc(item)" >使用文档</Button> -->
+              <!-- <Button icon="md-heart" @click="addFavorite(item)"
                 >添加到我的收藏</Button
-              >
+              > -->
               <Button
                 icon="ios-clipboard"
                 class="btn"
@@ -35,11 +35,11 @@
               >
                 拷贝网址</Button
               >
-              <Button
+              <!-- <Button
                 icon="ios-add-circle"
                 @click="addBookmarks(item.link, item.name)"
                 >加入书签</Button
-              >
+              > -->
               <Button icon="ios-trash" v-show="del" @click="delUrl(item)"
                 >从本项中删除</Button
               >
@@ -48,16 +48,26 @@
         </Poptip>
       </li>
     </ul>
-    <Modal  v-model="modalDoc" fullscreen footer-hide title="使用文档" @on-cancel="closeDoc">
+    <Modal
+      v-model="modalDoc"
+      fullscreen
+      footer-hide
+      title="使用文档"
+      @on-cancel="closeDoc"
+    >
       <div class="usage-content" v-if="modalDoc">
-          <div class="toc">
-            目录
+        <div class="toc">
+          目录
           <div id="toc" />
-          </div>
-          <div class="markdown">
-            <vue-markdown :source="docData" :toc=true toc-id="toc" ></vue-markdown>
-          </div>
-          <Spin size="large" fix v-if="docSpinShow"></Spin>
+        </div>
+        <div class="markdown">
+          <vue-markdown
+            :source="docData"
+            :toc="true"
+            toc-id="toc"
+          ></vue-markdown>
+        </div>
+        <Spin size="large" fix v-if="docSpinShow"></Spin>
       </div>
     </Modal>
     <Spin size="large" fix v-if="spinShow"></Spin>
@@ -66,24 +76,24 @@
 
 <script>
 import Clipboard from 'clipboard'
-import VueMarkdown from "vue-markdown";
+import VueMarkdown from "vue-markdown"
 
 
-import hljs from 'highlight.js';
+import hljs from 'highlight.js'
 // import "highlight.js/styles/atom-one-dark.css";
-import 'highlight.js/styles/github.css';
+import 'highlight.js/styles/github.css'
 
 
 let highlightCode = () => {
-  let preEl = document.querySelectorAll("pre");
-  let codeEl = document.querySelectorAll("code");
+  let preEl = document.querySelectorAll("pre")
+  let codeEl = document.querySelectorAll("code")
   preEl.forEach(el => {
-    hljs.highlightBlock(el);
-  });
+    hljs.highlightBlock(el)
+  })
   codeEl.forEach(el => {
-    hljs.highlightBlock(el);
-  });
-};
+    hljs.highlightBlock(el)
+  })
+}
 
 import { mapActions, mapGetters } from 'vuex'
 
@@ -110,8 +120,8 @@ export default {
     },
   },
   methods: {
-    openDoc(item) {
-      if(item.doc.startsWith("http")) {
+    openDoc (item) {
+      if (item.doc.startsWith("http")) {
         window.open(item.doc)
         return
       }
@@ -120,26 +130,26 @@ export default {
       this.$axios
         .get(item.doc)
         .then(rep => {
-          this.docData = rep.data;
+          this.docData = rep.data
         })
         .catch(e => {
-          this.$Message.error("获取数据失败!");
-          window.console.log(e);
+          this.$Message.error("获取数据失败!")
+          window.console.log(e)
         })
         .then(() => {
           this.docSpinShow = false
         })
     },
-    closeDoc() {
+    closeDoc () {
       this.docData = ""
       this.modalDoc = false
     },
-    jumpLink(item) {
+    jumpLink (item) {
       item.title = this.subTitle ? this.subTitle : item.title
       this.saveUsedList(item)
       window.open(item.link)
     },
-    copyLink() {
+    copyLink () {
       var clipboard = new Clipboard('.btn')
       clipboard.on('success', (e) => {
         // 成功提示
@@ -156,7 +166,7 @@ export default {
         window.console.log(e)
       })
     },
-    addFavorite(item) {
+    addFavorite (item) {
       const index = this.favoriteList.findIndex((a) => {
         return item.link === a.link
       })
@@ -168,10 +178,10 @@ export default {
       this.saveFavoriteList(item)
       this.$Message.success('添加成功')
     },
-    delUrl(item) {
+    delUrl (item) {
       this.deleteList(item)
     },
-    addBookmarks(url, title) {
+    addBookmarks (url, title) {
       var ua = navigator.userAgent.toLowerCase()
 
       if (ua.indexOf('msie 8') > -1) {
@@ -197,11 +207,11 @@ export default {
   components: {
     VueMarkdown
   },
-  mounted() {
-    highlightCode();
+  mounted () {
+    highlightCode()
   },
-  updated() {
-    highlightCode();
+  updated () {
+    highlightCode()
   }
 }
 </script>
@@ -292,7 +302,7 @@ span {
   margin-top: 5px;
   padding: 0 1em;
   color: #6a737d;
-  border-left: .25em solid #dfe2e5;
+  border-left: 0.25em solid #dfe2e5;
 }
 
 .toc {
@@ -318,5 +328,4 @@ span {
     }
   }
 }
-
 </style>
