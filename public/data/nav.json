@@ -5,13 +5,6 @@
     "icon": "ios-contacts-outline",
     "nav": [
       {
-        "icon": "./static/images/jenkins.png",
-        "name": "jenkins",
-        "desc": "测试环境Jenkins",
-        "link": "http://127.0.0.1:8080/",
-        "doc": "/data/docs/jenkins.md"
-      },
-      {
         "icon": "./static/images/confluence.png",
         "name": "Confluence",
         "desc": "Confluence, 技术文档",
@@ -90,6 +83,12 @@
         "name": "orion-ops",
         "desc": "orion-ops",
         "link": "http://172.16.21.45:9009/ops/#/console"
+      },
+      {
+        "icon": "./static/images/nacos.png",
+        "name": "nacos",
+        "desc": "nacos集群",
+        "link": "http://172.16.21.22:8848/nacos"
       }
     ]
   },
@@ -98,10 +97,16 @@
     "name": "dev",
     "nav": [
       {
-        "icon": "./static/images/confluence.png",
-        "name": "test1",
-        "desc": "Test1环境详细信息",
-        "link": "http://127.0.0.1:8090/pages/viewpage.action?pageId=6127905"
+        "icon": "./static/images/spring.png",
+        "name": "portal",
+        "desc": "开发环境portal",
+        "link": "http://172.16.21.200:19090"
+      },
+      {
+        "icon": "./static/images/shenyu.ico",
+        "name": "shenyu",
+        "desc": "开发环境shenyu网关",
+        "link": "http://172.16.21.22:19095"
       }
     ]
   },
@@ -110,10 +115,16 @@
     "name": "test",
     "nav": [
       {
-        "icon": "./static/images/confluence.png",
-        "name": "test1",
-        "desc": "Test1环境详细信息",
-        "link": "http://127.0.0.1:8090/pages/viewpage.action?pageId=6127905"
+        "icon": "./static/images/spring.png",
+        "name": "portal",
+        "desc": "测试环境portal",
+        "link": "http://172.16.21.200:9090"
+      },
+      {
+        "icon": "./static/images/shenyu.ico",
+        "name": "shenyu",
+        "desc": "测试环境shenyu网关",
+        "link": "http://172.16.21.22:9095"
       }
     ]
   },
@@ -122,10 +133,16 @@
     "name": "pre",
     "nav": [
       {
-        "icon": "./static/images/confluence.png",
-        "name": "pre",
-        "desc": "Pre环境详细信息",
-        "link": "http://127.0.0.1:8090/pages/viewpage.action?pageId=6127905"
+        "icon": "./static/images/spring.png",
+        "name": "portal",
+        "desc": "演示环境portal",
+        "link": "http://172.16.21.126:9090"
+      },
+      {
+        "icon": "./static/images/shenyu.ico",
+        "name": "shenyu",
+        "desc": "演示环境shenyu网关",
+        "link": "http://172.16.21.204:9095"
       }
     ]
   }
