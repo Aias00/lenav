@@ -181,5 +181,23 @@
         "link": "http://172.16.35.55:9110/xxl-job-admin/"
       }
     ]
+  },
+  "udap_dev": {
+    "title": "要素流通流转平台测试环境地址",
+    "name": "udap_dev",
+    "nav": [
+      {
+        "icon": "./static/images/spring.png",
+        "name": "portal",
+        "desc": "要素流通流转平台测试portal",
+        "link": "http://172.16.21.200:8800/portal/login"
+      },
+      {
+        "icon": "./static/images/shenyu.ico",
+        "name": "shenyu",
+        "desc": "要素流通流转平台测试shenyu网关",
+        "link": "http://172.16.35.74:9095"
+      }
+    ]
   }
 }
