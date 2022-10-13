@@ -25,6 +25,12 @@
       },
       {
         "icon": "./static/images/unicom.ico",
+        "name": "OA",
+        "desc": "OA",
+        "link": "http://sso.portal.unicom.local/eip_sso/aiportalLogin.html"
+      },
+      {
+        "icon": "./static/images/unicom.ico",
         "name": "智能运维平台",
         "desc": "智能运维平台",
         "link": "http://paas.ubd.unicom.local/login/?c_url=/console/"
@@ -38,7 +44,7 @@
       {
         "icon": "./static/images/kube.ico",
         "name": "kubesphere",
-        "desc": "kubesphere",
+        "desc": "生产环境kubesphere",
         "link": "http://10.191.23.104:30880/login?referer=/workspaces/cubigdata/projects"
       },
       {
@@ -48,16 +54,16 @@
         "link": "http://10.244.15.1/#/login"
       },
       {
+        "icon": "./static/images/unicom.ico",
+        "name": "4A",
+        "desc": "4A地址",
+        "link": "http://172.16.110.11"
+      },
+      {
         "icon": "./static/images/email.png",
         "name": "公司邮箱",
         "desc": "公司邮箱",
         "link": "https://hq.mail.chinaunicom.cn/"
-      },
-      {
-        "icon": "./static/images/easymock.png",
-        "name": "minidoc",
-        "desc": "智慧树文档管理系统",
-        "link": "http://172.16.21.76:8181/"
       }
     ]
   },
@@ -66,6 +72,12 @@
     "name": "group",
     "icon": "ios-contacts-outline",
     "nav": [
+      {
+        "icon": "./static/images/unicom.ico",
+        "name": "原型管理",
+        "desc": "原型管理",
+        "link": "http://172.16.21.45:10001/"
+      },
       {
         "icon": "./static/images/yapi.png",
         "name": "yapi",
@@ -89,6 +101,12 @@
         "name": "nacos",
         "desc": "nacos集群",
         "link": "http://172.16.21.22:8848/nacos"
+      },
+      {
+        "icon": "./static/images/jenkins.png",
+        "name": "jenkins",
+        "desc": "jenkins",
+        "link": "http://172.16.21.64:8080/"
       }
     ]
   },
@@ -152,6 +170,30 @@
       }
     ]
   },
+  "anquan": {
+    "title": "为安全部署的组件地址",
+    "name": "anquan",
+    "nav": [
+      {
+        "icon": "./static/images/spring.png",
+        "name": "portal",
+        "desc": "portal",
+        "link": "http://172.16.21.51:9090"
+      },
+      {
+        "icon": "./static/images/shenyu.ico",
+        "name": "shenyu",
+        "desc": "shenyu网关",
+        "link": "http://172.16.21.22:9095"
+      },
+      {
+        "icon": "./static/images/nacos.png",
+        "name": "nacos",
+        "desc": "nacos",
+        "link": "http://172.16.21.51:8848/nacos"
+      }
+    ]
+  },
   "pre": {
     "title": "演示环境地址",
     "name": "pre",
@@ -182,9 +224,9 @@
       }
     ]
   },
-  "udap_dev": {
-    "title": "数据要素流通流转平台测试环境地址",
-    "name": "udap_dev",
+  "udap_test": {
+    "title": "内部测试环境地址",
+    "name": "udap_test",
     "nav": [
       {
         "icon": "./static/images/spring.png",
@@ -197,6 +239,24 @@
         "name": "shenyu",
         "desc": "要素流通流转平台测试shenyu网关",
         "link": "http://172.16.35.74:9095"
+      }
+    ]
+  },
+  "udap_pre": {
+    "title": "内部预生产环境地址",
+    "name": "udap_test",
+    "nav": [
+      {
+        "icon": "./static/images/spring.png",
+        "name": "portal",
+        "desc": "portal",
+        "link": "https://dc-pre.cubigdata.cn/portal/index"
+      },
+      {
+        "icon": "./static/images/shenyu.ico",
+        "name": "shenyu",
+        "desc": "shenyu网关",
+        "link": "https://dcgetway-pre.cubigdata.cn/#/home"
       }
     ]
   },
@@ -215,6 +275,12 @@
         "name": "shenyu",
         "desc": "要素流通流转平台测试shenyu网关",
         "link": "https://dcgetway.cubigdata.cn:30443"
+      }
+      {
+        "icon": "./static/images/nacos.png",
+        "name": "nacos",
+        "desc": "nacos",
+        "link": "http://10.191.21.175:38848/nacos/"
       }
     ]
   }
