@@ -275,7 +275,7 @@
         "name": "shenyu",
         "desc": "要素流通流转平台测试shenyu网关",
         "link": "https://dcgetway.cubigdata.cn:30443"
-      }
+      },
       {
         "icon": "./static/images/nacos.png",
         "name": "nacos",
