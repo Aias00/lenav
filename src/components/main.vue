@@ -87,10 +87,29 @@
         >
           <NavSub :data="data" :spinShow="spinShow"></NavSub>
         </Content>
-        <!-- <Footer class="layout-footer-center">lenav ©2021 Created by Lework <a href="https://github.com/lework/lenav" target="_blank">GitHub</a></Footer> -->
+        <Footer class="layout-footer-center"
+          >nav ©2022 &emsp;
+          <a href="https://beian.miit.gov.cn/" target="_blank"
+            >京ICP备2022013247号</a
+          >
+          &emsp;
+          <a href="https://beian.miit.gov.cn/" target="_blank"
+            >京ICP备2022013247号-1</a
+          >
+        </Footer>
       </Layout>
     </Layout>
     <BackTop></BackTop>
+    <!-- <Footer class="layout-footer-center"
+      >nav ©2022 &emsp;
+      <a href="https://beian.miit.gov.cn/" target="_blank"
+        >京ICP备2022013247号</a
+      >
+      &emsp;
+      <a href="https://beian.miit.gov.cn/" target="_blank"
+        >京ICP备2022013247号-1</a
+      >
+    </Footer> -->
   </div>
 </template>
 <script>

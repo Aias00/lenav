@@ -34,6 +34,7 @@
       </Card>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -85,5 +86,8 @@ export default {
 }
 .nodeCard {
   margin: 20px 20px 0 20px;
+}
+.footer {
+  text-align: center;
 }
 </style>
