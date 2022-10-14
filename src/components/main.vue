@@ -106,7 +106,13 @@ export default {
       childrenList: [],
       sourceData: '',
       serarchNum: 0,
-      spinShow: false
+      spinShow: false,
+      query: {
+        key: null,
+        value: null,
+        description: null,
+        dataId: 'nacos_ops'
+      },
     }
   },
   computed: {
@@ -124,8 +130,27 @@ export default {
   methods: {
     _getData () {
       this.spinShow = true
+      // this.$axios
+      //   .get("/data/nav.json") // 获取nav数据
+      //   .then(rep => {
+      //     this.data = rep.data
+      //     for (let key in this.data) {
+      //       if (this.data[key].hasOwnProperty("children")) {
+      //         this.childrenList = this.childrenList.concat(this.data[key].children)
+      //       }
+      //     }
+      //     this.spinShow = false
+      //   })
+      //   .catch(e => {
+      //     this.$Message.error({
+      //       content: "获取数据失败!",
+      //       duration: 120,
+      //       closable: true
+      //     })
+      //     window.console.log("错误信息：", e)
+      //   })
       this.$axios
-        .get("/data/nav.json") // 获取nav数据
+        .get("/nacos/v1/cs/configs?dataId=nav-config&group=DEFAULT_GROUP&tenant=nav-config") // 获取nav数据
         .then(rep => {
           this.data = rep.data
           for (let key in this.data) {
@@ -143,6 +168,12 @@ export default {
           })
           window.console.log("错误信息：", e)
         })
+      // this.$api.getConfig({
+      //   ...this.query
+      // }).then(({ data }) => {
+      //   console.log(data)
+      // }).catch(() => {
+      // })
     },
     jumpAnchor (name) {
       if (document.documentElement.clientWidth <= 768) {

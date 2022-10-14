@@ -1,14 +1,14 @@
-const path = require('path');
+const path = require('path')
 // const webpack = require('webpack');
-const UglifyPlugin = require("uglifyjs-webpack-plugin");
+const UglifyPlugin = require("uglifyjs-webpack-plugin")
 
-const IS_PROD = ["production", "prod"].includes(process.env.NODE_ENV); //env
+const IS_PROD = ["production", "prod"].includes(process.env.NODE_ENV) //env
 
 module.exports = {
   // 基本路径
   publicPath: process.env.NODE_ENV === "production" ? process.env.BASE_URL : "./", //打包后的位置(如果不设置这个静态资源会报404),
   // 输出文件目录
-  outputDir: 'docs',
+  // outputDir: 'docs',
   // eslint-loader 是否在保存的时候检查
   lintOnSave: true,
   // webpack配置
@@ -17,7 +17,7 @@ module.exports = {
   configureWebpack: (config) => {
     if (IS_PROD) {
       // 为生产环境修改配置...
-      config.mode = 'production';
+      config.mode = 'production'
       // 将每个依赖包打包成单独的js文件
       let optimization = {
         runtimeChunk: 'single',
@@ -55,7 +55,7 @@ module.exports = {
       })
     } else {
       // 为开发环境修改配置...
-      config.mode = 'development';
+      config.mode = 'development'
     }
 
     Object.assign(config, {
@@ -67,7 +67,7 @@ module.exports = {
           '@c': path.resolve(__dirname, './src/components')
         }
       }
-    });
+    })
   },
   // 生产环境是否生成 sourceMap 文件
   productionSourceMap: false,
@@ -95,21 +95,21 @@ module.exports = {
     port: 8080,
     https: false,
     hotOnly: false,
-    // proxy: {
-    //  设置代理
-    //  proxy all requests starting with /api to jsonplaceholder
-    //  'http://localhost:8080/': {
-    //      target: 'http://baidu.com:8080', //真实请求的目标地址
-    //      changeOrigin: true,
-    //      pathRewrite: {
-    //          '^http://localhost:8080/': ''
-    //      }
-    //  }
-    // },
+    proxy: {
+    //   //  设置代理
+    //   //  proxy all requests starting with /api to jsonplaceholder
+      '^/nacos': {
+        target: 'http://172.16.21.22:8848/nacos', //真实请求的目标地址
+        changeOrigin: true,
+        pathRewrite: {
+          '^/nacos': ''
+        }
+      }
+    },
     // before: (app) => { }
   },
   // 第三方插件配置
   pluginOptions: {
     // ...
   }
-};
+}
