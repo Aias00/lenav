@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "axios": "^0.23.0",
-    "js-md5": "^0.7.3",
     "babel-runtime": "^6.26.0",
     "clipboard": "^2.0.8",
     "core-js": "^2.6.12",

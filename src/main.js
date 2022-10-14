@@ -6,12 +6,10 @@ import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 import VueLazyload from 'vue-lazyload'
 import axios from "axios"
-import $api from './lib/api'
 Vue.use(iView)
 Vue.use(VueLazyload, {
   loading: require('@/assets/loading.gif')
 })
-Vue.prototype.$api = $api
 Vue.config.productionTip = false
 axios.defaults.baseURL = process.env.BASE_URL
 Vue.prototype.$axios = axios
