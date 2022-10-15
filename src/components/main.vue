@@ -125,7 +125,7 @@ export default {
       childrenList: [],
       sourceData: '',
       serarchNum: 0,
-      spinShow: false
+      spinShow: false,
     }
   },
   computed: {
@@ -144,7 +144,7 @@ export default {
     _getData () {
       this.spinShow = true
       this.$axios
-        .get("/data/nav.json") // 获取nav数据
+        .get("/nacos/v1/cs/configs?dataId=nav-config&group=DEFAULT_GROUP&tenant=nav-config") // 获取nav数据
         .then(rep => {
           this.data = rep.data
           for (let key in this.data) {
