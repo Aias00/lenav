@@ -76,6 +76,13 @@
             v-show="searchStatus"
             >重置</Button
           >
+          <Button
+            type="primary"
+            icon="ios-add"
+            @click="showAddModal"
+            style="margin-left: 10px"
+            >新建</Button
+          >
           <!-- <Button type="success" icon="plus-round" @click="resetSearch" >重置</Button> -->
         </Header>
         <Content
@@ -91,10 +98,54 @@
       </Layout>
     </Layout>
     <BackTop></BackTop>
+
+    <!-- 新建弹框 -->
+    <Modal
+      v-model="addModalVisible"
+      title="新建项目"
+      :mask-closable="false"
+      :closable="true"
+      width="600"
+      @on-ok="handleAddSubmit"
+      @on-cancel="handleAddCancel"
+    >
+      <Form
+        ref="addForm"
+        :model="addFormData"
+        :rules="addFormRules"
+        :label-width="80"
+      >
+        <FormItem label="项目名称" prop="name">
+          <Input v-model="addFormData.name" placeholder="请输入项目名称" />
+        </FormItem>
+        <FormItem label="项目地址" prop="link">
+          <Input v-model="addFormData.link" placeholder="请输入项目地址" />
+        </FormItem>
+        <FormItem label="项目描述" prop="desc">
+          <Input v-model="addFormData.desc" placeholder="请输入项目描述" />
+        </FormItem>
+        <FormItem label="Logo地址" prop="icon">
+          <Input v-model="addFormData.icon" placeholder="请输入Logo地址" />
+        </FormItem>
+        <FormItem label="所属分类" prop="category">
+          <Select v-model="addFormData.category" placeholder="请选择所属分类">
+            <Option value="company">公司环境地址</Option>
+            <Option value="group">组内环境</Option>
+            <Option value="dev">开发环境地址</Option>
+            <Option value="cloud">研发上云环境</Option>
+            <Option value="k8s">k8s环境相关地址</Option>
+            <Option value="k8s-test">k8s测试环境地址</Option>
+            <Option value="k8s-demo">k8s演示环境地址</Option>
+            <Option value="pre-prod">内部预生产环境</Option>
+            <Option value="prod">内部生产地址</Option>
+          </Select>
+        </FormItem>
+      </Form>
+    </Modal>
   </div>
 </template>
 <script>
-import NavSub from '@/components/card/sub'
+import NavSub from '@/components/card/sub';
 // import Data from '@/data/data'
 export default {
   data () {
@@ -107,96 +158,190 @@ export default {
       sourceData: '',
       serarchNum: 0,
       spinShow: false,
-    }
+      // 新建弹框相关
+      addModalVisible: false,
+      addFormData: {
+        name: '',
+        link: '',
+        desc: '',
+        icon: '',
+        category: 'company'
+      },
+      addFormRules: {
+        name: [
+          { required: true, message: '请输入项目名称', trigger: 'blur' }
+        ],
+        link: [
+          { required: true, message: '请输入项目地址', trigger: 'blur' },
+          { type: 'url', message: '请输入正确的URL格式', trigger: 'blur' }
+        ],
+        desc: [
+          { required: false, message: '请输入项目描述', trigger: 'blur' }
+        ],
+        icon: [
+          { required: false, message: '请输入Logo地址', trigger: 'blur' },
+          {
+            validator: (rule, value, callback) => {
+              if (value && value.trim() !== '') {
+                const urlPattern = /^https?:\/\/.+/;
+                if (!urlPattern.test(value)) {
+                  callback(new Error('请输入正确的URL格式'));
+                } else {
+                  callback();
+                }
+              } else {
+                callback();
+              }
+            },
+            trigger: 'blur'
+          }
+        ],
+        category: [
+          { required: true, message: '请选择所属分类', trigger: 'change' }
+        ]
+      }
+    };
   },
   computed: {
     menuitemClasses: function () {
       return [
         'menu-item',
         this.isCollapsed ? 'collapsed-menu' : ''
-      ]
+      ];
     }
   },
   created: function () {
     // window.console.group('------Create创建前状态------');
-    this._getData()
+    this._getData();
   },
   methods: {
     _getData () {
-      this.spinShow = true
+      this.spinShow = true;
       this.$axios
         .get("/api/nav/config") // 获取nav数据
         .then(rep => {
           // 新的API返回结构是 {success: true, data: {...}}
-          this.data = rep.data.data || rep.data // 兼容新旧两种格式
+          this.data = rep.data.data || rep.data; // 兼容新旧两种格式
           for (let key in this.data) {
             if (this.data[key].hasOwnProperty("children")) {
-              this.childrenList = this.childrenList.concat(this.data[key].children)
+              this.childrenList = this.childrenList.concat(this.data[key].children);
             }
           }
-          this.spinShow = false
+          this.spinShow = false;
         })
         .catch(e => {
           this.$Message.error({
             content: "获取数据失败!",
             duration: 120,
             closable: true
-          })
-          window.console.log("错误信息：", e)
-        })
+          });
+          window.console.log("错误信息：", e);
+        });
     },
     jumpAnchor (name) {
       if (document.documentElement.clientWidth <= 768) {
-        this.isCollapsed = true
+        this.isCollapsed = true;
       }
 
-      let offset = 66
-      let el = document.querySelector('#' + name)
-      window.scroll({ top: (el.offsetTop - offset), left: 0, behavior: 'smooth' })
+      let offset = 66;
+      let el = document.querySelector('#' + name);
+      window.scroll({ top: (el.offsetTop - offset), left: 0, behavior: 'smooth' });
     },
     searchData () {
       if (typeof this.search === 'undefined' || this.search === null || this.search === '') {
-        this.$Message.error('请输入要搜索的内容')
-        return true
+        this.$Message.error('请输入要搜索的内容');
+        return true;
       }
       if (!this.searchStatus) {
-        this.sourceData = JSON.parse(JSON.stringify(this.data))
+        this.sourceData = JSON.parse(JSON.stringify(this.data));
       } else {
-        this.data = JSON.parse(JSON.stringify(this.sourceData))
+        this.data = JSON.parse(JSON.stringify(this.sourceData));
       }
-      this.searchStatus = true
-      this.serarchNum = 0
+      this.searchStatus = true;
+      this.serarchNum = 0;
       for (let d in this.data) {
         if (!this.data[d].hasOwnProperty("nav")) {
-          continue
+          continue;
         }
         for (let i = 0; i < this.data[d]['nav'].length; i++) {
           if (this.data[d]['nav'][i]['name'].toLowerCase().indexOf(this.search.toLowerCase()) === -1) {
             if (this.data[d]['nav'][i]['link'].toLowerCase().indexOf(this.search.toLowerCase()) === -1) {
-              this.data[d]['nav'].splice(i--, 1)
+              this.data[d]['nav'].splice(i--, 1);
             } else {
-              this.serarchNum++
+              this.serarchNum++;
             }
           } else {
-            this.serarchNum++
+            this.serarchNum++;
           }
         }
       }
       if (this.serarchNum === 0) {
-        this.$Message.error('没找到哦，请重试!')
+        this.$Message.error('没找到哦，请重试!');
       } else {
-        this.$Message.success('查找到了' + this.serarchNum + '个相近的.')
+        this.$Message.success('查找到了' + this.serarchNum + '个相近的.');
       }
     },
     resetSearch () {
-      this.spinShow = true
-      this.searchStatus = false
-      this.search = ''
-      this.serarchNum = 0
-      this.data = JSON.parse(JSON.stringify(this.sourceData))
+      this.spinShow = true;
+      this.searchStatus = false;
+      this.search = '';
+      this.serarchNum = 0;
+      this.data = JSON.parse(JSON.stringify(this.sourceData));
       setTimeout(() => {
-        this.spinShow = false
-      }, 1000)
+        this.spinShow = false;
+      }, 1000);
+    },
+    // 新建相关方法
+    showAddModal () {
+      this.addModalVisible = true;
+      this.resetAddForm();
+    },
+    resetAddForm () {
+      this.addFormData = {
+        name: '',
+        link: '',
+        desc: '',
+        icon: '',
+        category: 'company'
+      };
+      this.$nextTick(() => {
+        this.$refs.addForm.resetFields();
+      });
+    },
+    handleAddCancel () {
+      this.addModalVisible = false;
+      this.resetAddForm();
+    },
+    handleAddSubmit () {
+      this.$refs.addForm.validate((valid) => {
+        if (valid) {
+          this.submitAddForm();
+        } else {
+          this.$Message.error('请检查表单信息');
+        }
+      });
+    },
+    submitAddForm () {
+      this.spinShow = true;
+      this.$axios.post('/api/nav/add', this.addFormData)
+        .then(response => {
+          if (response.data.success) {
+            this.$Message.success('添加成功！');
+            this.addModalVisible = false;
+            this.resetAddForm();
+            // 重新加载数据
+            this._getData();
+          } else {
+            this.$Message.error(response.data.message || '添加失败');
+          }
+        })
+        .catch(error => {
+          console.error('添加失败:', error);
+          this.$Message.error('添加失败，请重试');
+        })
+        .finally(() => {
+          this.spinShow = false;
+        });
     }
   },
   components: {

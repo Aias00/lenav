@@ -1,0 +1,441 @@
+{
+  "company": {
+    "title": "公司环境地址",
+    "name": "company",
+    "nav": [
+      {
+        "icon": "./static/images/confluence.png",
+        "name": "Confluence",
+        "desc": "Confluence, 技术文档",
+        "link": "http://10.191.21.235:8090/#all-updates",
+        "doc": "https://www.atlassian.com/software/confluence"
+      },
+      {
+        "icon": "./static/images/nexus.png",
+        "name": "nexus",
+        "desc": "nexus私服",
+        "link": "http://10.126.138.142:8081/nexus/#welcome"
+      },
+      {
+        "icon": "./static/images/gitlab.png",
+        "name": "Gitlab",
+        "desc": "gitlab 代码托管",
+        "link": "http://10.190.128.13/"
+      },
+      {
+        "icon": "./static/images/gitlab.png",
+        "name": "代码审计",
+        "desc": "代码审计",
+        "link": "https://10.126.157.12/"
+      },
+      {
+        "icon": "./static/images/unicom.ico",
+        "name": "OA",
+        "desc": "OA",
+        "link": "http://sso.portal.unicom.local/eip_sso/aiportalLogin.html?appid=na186&success=http://service.aiportal.unicom.local//ssoclient/ssologin%3Faction%3Dlogin&error=http://sso.portal.unicom.local/eip_sso/aiportalLogin.html&return=http://sso.portal.unicom.local/eip_sso/aiportalLogin.html&oawx_t=A0001"
+      },
+      {
+        "icon": "http://paas.ubd.unicom.local/login/static/favicon.ico",
+        "name": "智能运维平台",
+        "desc": "智能运维平台",
+        "link": "http://paas.ubd.unicom.local/login/?c_url=/console/"
+      },
+      {
+        "icon": "https://10.126.157.12/favicon.ico",
+        "name": "代码审核",
+        "desc": "代码审核",
+        "link": "https://10.126.157.12/#/login"
+      },
+      {
+        "icon": "./static/images/zentao.ico",
+        "name": "禅道",
+        "desc": "禅道",
+        "link": "http://172.16.21.108:8000/zentao/bug-browse-25.html#app=qa"
+      },
+      {
+        "icon": "./static/images/kube.ico",
+        "name": "kubesphere",
+        "desc": "生产环境kubesphere",
+        "link": "http://10.191.23.104:30880/login?referer=/workspaces/cubigdata/projects"
+      },
+      {
+        "icon": "./static/images/unicom.ico",
+        "name": "smartops",
+        "desc": "smartops",
+        "link": "http://10.244.15.1/#/login"
+      },
+      {
+        "icon": "./static/images/unicom.ico",
+        "name": "4A外网",
+        "desc": "4A地址(mac电脑复制到safari浏览器打开)",
+        "link": "https://114.251.166.156:23232/"
+      },
+      {
+        "icon": "./static/images/unicom.ico",
+        "name": "4A内网",
+        "desc": "4A地址(mac电脑复制到safari浏览器打开)",
+        "link": "http://172.16.110.11"
+      },
+      {
+        "icon": "./static/images/email.png",
+        "name": "公司邮箱",
+        "desc": "公司邮箱",
+        "link": "https://login.mail.chinaunicom.cn"
+      },
+      {
+        "icon": "./static/images/unicom.ico",
+        "name": "网上学院",
+        "desc": "网上学院",
+        "link": "http://wsxy.chinaunicom.cn/learner/home"
+      },
+      {
+        "icon": "./static/images/unicom.ico",
+        "name": "智慧党校",
+        "desc": "智慧党校",
+        "link": "http://campus.chinaunicom.cn/"
+      },
+      {
+        "icon": "",
+        "name": "1",
+        "desc": "",
+        "link": "http://www.baidu.com"
+      }
+    ]
+  },
+  "group": {
+    "title": "组内环境",
+    "name": "group",
+    "nav": [
+      {
+        "icon": "http://172.16.21.45:10001/favicon.ico",
+        "name": "原型管理",
+        "desc": "原型管理",
+        "link": "http://172.16.21.45:10001/"
+      },
+      {
+        "icon": "http://172.16.21.45:10001/favicon.ico",
+        "name": "cdh管理界面",
+        "desc": "cdh管理界面",
+        "link": "http://172.16.21.111:7180/cmf/home"
+      },
+      {
+        "icon": "./static/images/yapi.png",
+        "name": "yapi",
+        "desc": "yapi接口文档管理",
+        "link": "http://172.16.21.21:3000/"
+      },
+      {
+        "icon": "./static/images/nacos.png",
+        "name": "nacos",
+        "desc": "nacos集群",
+        "link": "http://172.16.21.23:8848/nacos"
+      },
+      {
+        "icon": "./static/images/jenkins.png",
+        "name": "jenkins",
+        "desc": "jenkins",
+        "link": "http://172.16.21.21:8080/"
+      },
+      {
+        "icon": "./static/images/jenkins.png",
+        "name": "kingbase迁移工具",
+        "desc": "kingbase迁移工具",
+        "link": "http://172.16.22.49:54523/"
+      }
+    ]
+  },
+  "k8s-manage": {
+    "title": "k8s环境相关地址",
+    "name": "k8s-manage",
+    "nav": [
+      {
+        "icon": "./static/images/kube.ico",
+        "name": "KubeSphere",
+        "desc": "KubeSphere",
+        "link": "http://10.244.12.9:30880/"
+      },
+      {
+        "icon": "./static/images/jenkins.png",
+        "name": "jenkins",
+        "desc": "jenkins",
+        "link": "http://10.244.12.9:39000/"
+      },
+      {
+        "icon": "https://10.244.12.9/favicon.ico?v=2",
+        "name": "harbor",
+        "desc": "镜像私服",
+        "link": "https://10.244.12.9/"
+      },
+      {
+        "icon": "./static/images/nacos.png",
+        "name": "nacos",
+        "desc": "演示环境nacos",
+        "link": "http://10.244.12.9:39001/nacos/#/login"
+      },
+      {
+        "icon": "./static/images/elastic.png",
+        "name": "kibana",
+        "desc": "演示环境日志kibana",
+        "link": "http://10.244.12.9:39005/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),index:c63ac4c0-85d2-11ed-b95e-41727df77904,interval:auto,query:(language:kuery,query:''),sort:!(!('@timestamp',desc)))"
+      },
+      {
+        "icon": "./static/images/elastic.png",
+        "name": "es",
+        "desc": "演示环境日志es",
+        "link": "http://10.244.12.9:39015/"
+      },
+      {
+        "icon": "http://10.244.11.111:8092/favicon.ico",
+        "name": "doris",
+        "desc": "演示环境日志doris",
+        "link": "http://10.244.11.111:8092"
+      },
+      {
+        "icon": "http://172.16.21.153:9002/favicon-32x32.png",
+        "name": "release minio",
+        "desc": "release minio",
+        "link": "http://10.244.12.9:39006/login"
+      },
+      {
+        "icon": "./static/images/gitlab.png",
+        "name": "gitlab",
+        "desc": "演示环境gitlab",
+        "link": "http://10.244.12.9:39016/users/sign_in"
+      },
+      {
+        "icon": "http://10.244.12.9:39076/favicon/favicon.ico",
+        "name": "kafka ui",
+        "desc": "kafka监控页面",
+        "link": "http://10.244.12.9:39076/"
+      }
+    ]
+  },
+  "dev": {
+    "title": "开发环境地址",
+    "name": "dev",
+    "nav": [
+      {
+        "icon": "http://172.16.21.153:9002/favicon-32x32.png",
+        "name": "开发环境minio",
+        "desc": "开发环境minio",
+        "link": "http://172.16.21.153:9001/"
+      },
+      {
+        "icon": "./static/images/spring.png",
+        "name": "portal",
+        "desc": "开发环境portal(新-48)",
+        "link": "http://172.16.21.48:19090"
+      },
+      {
+        "icon": "./static/images/spring.png",
+        "name": "portal",
+        "desc": "开发环境portal(旧-21)",
+        "link": "http://172.16.21.200:19090"
+      },
+      {
+        "icon": "./static/images/shenyu.ico",
+        "name": "shenyu",
+        "desc": "开发环境shenyu网关",
+        "link": "http://172.16.21.22:19095"
+      },
+      {
+        "icon": "./static/images/elastic.png",
+        "name": "es",
+        "desc": "开发环境 es",
+        "link": "http://172.16.21.23:9200/"
+      },
+      {
+        "icon": "./static/images/vue.ico",
+        "name": "dataxWeb",
+        "desc": "开发环境dataxWeb",
+        "link": "http://172.16.35.56:9201/index.html"
+      },
+      {
+        "icon": "http://172.16.21.153:8192/static-files/favicon.ico",
+        "name": "mlflow",
+        "desc": "开发环境mlflow",
+        "link": "http://172.16.21.153:8192/"
+      },
+      {
+        "icon": "http://172.16.21.200:3002/jupyter/static/base/images/favicon.ico",
+        "name": "jupyter",
+        "desc": "开发环境jupyter",
+        "link": "http://172.16.21.200:3002/jupyter"
+      }
+    ]
+  },
+  "k8s-test": {
+    "title": "k8s测试环境地址",
+    "name": "k8s-test",
+    "nav": [
+      {
+        "icon": "http://172.16.21.153:9002/favicon-32x32.png",
+        "name": "测试环境minio",
+        "desc": "测试环境minio",
+        "link": "http://10.244.12.9:39022/login"
+      },
+      {
+        "icon": "./static/images/spring.png",
+        "name": "portal",
+        "desc": "测试环境portal",
+        "link": "http://10.244.12.9:39092/portal/index"
+      },
+      {
+        "icon": "./static/images/shenyu.ico",
+        "name": "shenyu",
+        "desc": "测试环境shenyu网关管理页面",
+        "link": "http://10.244.12.9:39055/#/user/login"
+      },
+      {
+        "icon": "./static/images/elastic.png",
+        "name": "es",
+        "desc": "测试环境es",
+        "link": "http://10.244.12.9:39035/"
+      },
+      {
+        "icon": "http://10.244.12.9:39053/static-files/favicon.ico",
+        "name": "mlflow",
+        "desc": "mlflow",
+        "link": "http://10.244.12.9:39053"
+      }
+    ]
+  },
+  "k8spre": {
+    "title": "k8s演示环境地址",
+    "name": "k8spre",
+    "nav": [
+      {
+        "icon": "./static/images/spring.png",
+        "name": "portal",
+        "desc": "演示环境portal",
+        "link": "http://10.244.12.9:39090/portal/index"
+      },
+      {
+        "icon": "./static/images/spring.png",
+        "name": "portal",
+        "desc": "政务热线portal",
+        "link": "http://10.244.12.9:39083/portal/index"
+      },
+      {
+        "icon": "./static/images/shenyu.ico",
+        "name": "shenyu",
+        "desc": "演示环境shenyu网关管理页面",
+        "link": "http://10.244.12.9:39095/#/user/login"
+      },
+      {
+        "icon": "./static/images/vue.ico",
+        "name": "dataxWeb",
+        "desc": "演示环境dataxWeb",
+        "link": "http://10.244.12.9:39003/index.html"
+      },
+      {
+        "icon": "./static/images/xxl.ico",
+        "name": "xxl-job",
+        "desc": "演示环境xxl-job",
+        "link": "http://10.244.12.9:39004/xxl-job-admin/toLogin"
+      },
+      {
+        "icon": "http://172.16.21.153:9002/favicon-32x32.png",
+        "name": "演示环境minio",
+        "desc": "演示环境minio",
+        "link": "http://10.244.12.9:39002/login"
+      },
+      {
+        "icon": "http://10.244.12.9:39090/jupyter/static/base/images/favicon.ico",
+        "name": "演示环境jupyter",
+        "desc": "演示环境jupyter",
+        "link": "http://10.244.12.9:39090/jupyter"
+      }
+    ]
+  },
+  "udap_pre": {
+    "title": "内部预生产环境地址",
+    "name": "udap_test",
+    "nav": [
+      {
+        "icon": "./static/images/spring.png",
+        "name": "portal",
+        "desc": "portal",
+        "link": "https://dc-pre.cubigdata.cn/portal/index"
+      },
+      {
+        "icon": "./static/images/shenyu.ico",
+        "name": "shenyu",
+        "desc": "shenyu网关",
+        "link": "https://dcgetway-pre.cubigdata.cn/#/home"
+      }
+    ]
+  },
+  "udap_prod": {
+    "title": "内部生产地址",
+    "name": "udap_prod",
+    "nav": [
+      {
+        "icon": "./static/images/spring.png",
+        "name": "portal",
+        "desc": "内部生产portal",
+        "link": "https://dc.cubigdata.cn/portal/index"
+      },
+      {
+        "icon": "./static/images/spring.png",
+        "name": "portal",
+        "desc": "新内部预生产",
+        "link": "http://10.244.12.9:39020/"
+      },
+      {
+        "icon": "./static/images/shenyu.ico",
+        "name": "shenyu",
+        "desc": "内部生产shenyu网关",
+        "link": "http://10.191.23.122:9095/#/home"
+      },
+      {
+        "icon": "./static/images/nacos.png",
+        "name": "nacos",
+        "desc": "内部生产nacos",
+        "link": "http://10.191.23.122:28848/nacos/"
+      }
+    ]
+  },
+  "developYun": {
+    "title": "研发上云环境",
+    "name": "developYun",
+    "nav": [
+      {
+        "icon": "./static/images/spring.png",
+        "name": "windows客户端下载地址",
+        "desc": "windows客户端下载地址",
+        "link": "https://106.74.154.115:8443"
+      },
+      {
+        "icon": "./static/images/spring.png",
+        "name": "堡垒机",
+        "desc": "堡垒机地址",
+        "link": "https://192.168.0.16/"
+      },
+      {
+        "icon": "./static/images/spring.png",
+        "name": "数科统一研发平台",
+        "desc": "数科统一研发平台",
+        "link": "https://192.168.23.216:32443/"
+      },
+      {
+        "icon": "./static/images/spring.png",
+        "name": "gitlab",
+        "desc": "gitlab",
+        "link": "http://192.168.20.49:18080/"
+      },
+      {
+        "icon": "./static/images/nexus.png",
+        "name": "nexus 私服",
+        "desc": "nexus",
+        "link": "http://192.168.20.145:8081/#browse/browse"
+      },
+      {
+        "icon": "./static/images/spring.png",
+        "name": "docker 私服",
+        "desc": "harbor",
+        "link": "http://192.168.23.212:32000"
+      }
+    ]
+  }
+}
