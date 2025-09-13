@@ -92,17 +92,24 @@ module.exports = {
   devServer: {
     open: process.platform === 'darwin',
     host: '0.0.0.0',
-    port: 8080,
+    port: 5556,
     https: false,
     hotOnly: false,
     proxy: {
-    //   //  设置代理
-    //   //  proxy all requests starting with /api to jsonplaceholder
-      '^/nacos': {
-        target: 'http://172.16.21.22:8848/nacos', //真实请求的目标地址
+      // Python后端服务代理
+      '^/api': {
+        target: 'http://localhost:5555', // Python后端服务地址
         changeOrigin: true,
         pathRewrite: {
-          '^/nacos': ''
+          '^/api': '/api'
+        }
+      },
+      // 兼容原有Nacos接口（由Python后端提供服务）
+      '^/nacos/v1/cs/configs': {
+        target: 'http://localhost:5555', // Python后端服务地址
+        changeOrigin: true,
+        pathRewrite: {
+          '^/nacos/v1/cs/configs': '/nacos/v1/cs/configs'
         }
       }
     },

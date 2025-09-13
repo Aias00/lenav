@@ -9,9 +9,9 @@
         v-model="isCollapsed"
         :style="{ position: 'fixed', height: '100vh', left: 0 }"
       >
-        <div class="logo-con">
+        <!-- <div class="logo-con">
           <a href="./"><img src="logo.png" key="max-logo" /></a>
-        </div>
+        </div> -->
         <Menu
           active-name="1-2"
           theme="dark"
@@ -42,11 +42,11 @@
                 <span>{{ item.title }}</span></template
               >
               <MenuItem
-                :name="data[key].title"
+                :name="data[key] ? data[key].title : key"
                 v-for="key in item.children"
                 :key="key"
               >
-                <span>{{ data[key].title }}</span>
+                <span>{{ data[key] ? data[key].title : key }}</span>
               </MenuItem>
             </Submenu>
           </template>
@@ -125,9 +125,10 @@ export default {
     _getData () {
       this.spinShow = true
       this.$axios
-        .get("/nacos/v1/cs/configs?dataId=nav-config&group=DEFAULT_GROUP&tenant=nav-config") // 获取nav数据
+        .get("/api/nav/config") // 获取nav数据
         .then(rep => {
-          this.data = rep.data
+          // 新的API返回结构是 {success: true, data: {...}}
+          this.data = rep.data.data || rep.data // 兼容新旧两种格式
           for (let key in this.data) {
             if (this.data[key].hasOwnProperty("children")) {
               this.childrenList = this.childrenList.concat(this.data[key].children)

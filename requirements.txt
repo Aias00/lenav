@@ -1,0 +1,6 @@
+Flask==2.3.3
+Flask-CORS==4.0.0
+nacos-py-client==0.2.6
+PyYAML==6.0.1
+python-dotenv==1.0.0
+gunicorn==21.2.0

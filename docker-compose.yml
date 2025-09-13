@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # Lenav应用服务 - 使用简化版Dockerfile
+  lenav:
+    build:
+      context: .
+    container_name: lenav-app
+    ports:
+      - "8088:80"
+    environment:
+      # Nacos配置（可选，如果不配置将使用默认数据）
+      - NACOS_URL=${NACOS_URL:-}
+      - DATA_ID=${DATA_ID:-nav-config}
+      - GROUP=${GROUP:-DEFAULT_GROUP}
+      - TENANT=${TENANT:-nav-config}
+      - NACOS_USERNAME=${NACOS_USERNAME:-}
+      - NACOS_PASSWORD=${NACOS_PASSWORD:-}
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - lenav-network
+
+# 网络配置
+networks:
+  lenav-network:
+    driver: bridge
