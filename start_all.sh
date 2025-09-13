@@ -174,8 +174,8 @@ cleanup() {
     fi
 }
 
-# 信号处理
-trap cleanup EXIT INT TERM
+# 信号处理 - 只在监控模式下启用
+# trap cleanup EXIT INT TERM
 
 # 启动后端服务
 start_backend() {
@@ -225,12 +225,13 @@ start_frontend() {
     
     # 启动前端服务（后台运行）
     print_info "启动前端服务在端口 5556..."
+    export NODE_OPTIONS="--openssl-legacy-provider"
     nohup npm run serve > frontend.log 2>&1 &
     FRONTEND_PID=$!
     
     # 等待前端服务启动
     print_info "等待前端服务启动..."
-    sleep 10
+    sleep 15
     
     # 检查前端服务是否正常
     if curl -s http://localhost:5556 > /dev/null; then
@@ -309,7 +310,7 @@ main() {
         start_backend
         start_frontend
         show_access_info
-        monitor_services
+        print_info "服务已在后台运行，使用 './start_all.sh status' 检查状态"
         exit 0
     fi
     
@@ -329,13 +330,65 @@ main() {
         exit 0
     fi
     
-    # 默认启动所有服务
+    if [ "$1" = "monitor" ]; then
+        print_info "启动服务并进入监控模式..."
+        # 在监控模式下启用信号处理
+        trap cleanup EXIT INT TERM
+        check_dependencies
+        setup_environment
+        start_backend
+        start_frontend
+        show_access_info
+        monitor_services
+        exit 0
+    fi
+    
+    if [ "$1" = "logs" ]; then
+        print_info "查看服务日志..."
+        echo "后端日志 (按 Ctrl+C 退出):"
+        tail -f backend.log
+        exit 0
+    fi
+    
+    if [ "$1" = "logs-frontend" ]; then
+        print_info "查看前端日志..."
+        echo "前端日志 (按 Ctrl+C 退出):"
+        tail -f frontend.log
+        exit 0
+    fi
+    
+    if [ "$1" = "help" ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+        echo "用法: $0 [选项]"
+        echo ""
+        echo "选项:"
+        echo "  (无参数)    启动服务并在后台运行"
+        echo "  monitor     启动服务并进入监控模式"
+        echo "  stop        停止所有服务"
+        echo "  restart     重启所有服务"
+        echo "  status      检查服务状态"
+        echo "  logs        查看后端日志"
+        echo "  logs-frontend 查看前端日志"
+        echo "  help        显示此帮助信息"
+        echo ""
+        echo "示例:"
+        echo "  $0                    # 启动服务并在后台运行"
+        echo "  $0 monitor           # 启动服务并监控状态"
+        echo "  $0 stop              # 停止所有服务"
+        echo "  $0 status            # 检查服务状态"
+        echo "  $0 logs              # 查看后端日志"
+        echo "  $0 logs-frontend     # 查看前端日志"
+        exit 0
+    fi
+    
+    # 默认启动所有服务并在后台运行
     check_dependencies
     setup_environment
     start_backend
     start_frontend
     show_access_info
-    monitor_services
+    print_info "服务已在后台运行，使用 './start_all.sh status' 检查状态"
+    print_info "使用 './start_all.sh logs' 查看日志"
+    print_info "使用 './start_all.sh stop' 停止服务"
 }
 
 # 运行主函数
